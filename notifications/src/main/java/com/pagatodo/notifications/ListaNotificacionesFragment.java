@@ -55,6 +55,16 @@ public class ListaNotificacionesFragment extends AbstractFragment {
                 return false;
             }
         });
+        binding.ivCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                if ( getParentFragment() instanceof NotificacionesDialogFragment) {
+                    ((NotificacionesDialogFragment) getParentFragment()).dismiss();
+                }
+
+            }
+        });
+
         numNotificacionesFirestore=0;
         initNotificacionListener(getString(
                 R.string.firestore_notificacion,
