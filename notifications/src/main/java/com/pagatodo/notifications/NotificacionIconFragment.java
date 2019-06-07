@@ -55,8 +55,8 @@ public class NotificacionIconFragment extends AbstractFragment {
             }
         };
 
-//        NotificacionesProvider notificacionesProvider = NotificacionesProvider.getInstance(getActivity().getApplication());
-//        notificacionesProvider.setNotificacionCallback(listener);
+        NotificacionesProvider notificacionesProvider = NotificacionesProvider.getInstance(getActivity().getApplication());
+        notificacionesProvider.setNotificacionCallback(listener);
 
         return binding.getRoot();
     }
