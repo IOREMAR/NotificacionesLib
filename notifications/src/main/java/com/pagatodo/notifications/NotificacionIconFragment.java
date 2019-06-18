@@ -1,5 +1,6 @@
 package com.pagatodo.notifications;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class NotificacionIconFragment extends AbstractFragment {
     private static final String TAG = NotificacionIconFragment.class.getName();
     private FragmentLibNotificacionIconBinding binding;
     private final Set<String> notificationIds = new TreeSet<>();
+    private Activity context;
 
     public static NotificacionIconFragment newInstance() {
         final NotificacionIconFragment fragment = new NotificacionIconFragment();
@@ -33,6 +35,7 @@ public class NotificacionIconFragment extends AbstractFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
+        context = getActivity();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lib_notificacion_icon, container, false);
         binding.btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +54,6 @@ public class NotificacionIconFragment extends AbstractFragment {
             }
         };
 
-        NotificacionesProvider notificacionesProvider = NotificacionesProvider.getInstance(getActivity().getApplication());
-        notificacionesProvider.setNotificacionCallback(listener);
 
         return binding.getRoot();
     }
@@ -72,14 +73,14 @@ public class NotificacionIconFragment extends AbstractFragment {
 
     public void initNotificationsReminder() {
 
-        PreferenceManager.putNotificationTimestamp(getActivity());
+        PreferenceManager.putNotificationTimestamp(context);
 
         final long timelapse = 5 * 60 * 1000;
 
         if ( handler == null ) {
             handler = new Handler();
         }
-        final Context context = getActivity();
+
         if ( runnableCode == null ) {
             runnableCode = new Runnable() {
                 @Override
@@ -88,15 +89,15 @@ public class NotificacionIconFragment extends AbstractFragment {
                     Long timestamp = PreferenceManager.getNotificationTimestamp(context);
 
                     if ((timestamp + timelapse) < Calendar.getInstance().getTimeInMillis()) {
-                        if (getActivity() instanceof OnNotificacionInteraction) {
-                            ((OnNotificacionInteraction) getActivity()).notificationReminder(
+                        if (context instanceof OnNotificacionInteraction) {
+                            ((OnNotificacionInteraction) context).notificationReminder(
                                     getString(R.string.Cabecera_notificacion_aviso),
                                     getString(R.string.Cuerpo_notificacion_aviso)
                             );
                         }else{
                             Toast.makeText(context, "La libreria notificaciones requiere que la actividad donde se ocupe implemente OnNotificacionInteraction", Toast.LENGTH_SHORT).show();
                         }
-                        PreferenceManager.putNotificationTimestamp(getActivity());
+                        PreferenceManager.putNotificationTimestamp(context);
                     }
                     handler.postDelayed(this, 10000);
 
