@@ -1,8 +1,10 @@
 package com.pagatodo.notifications;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +28,6 @@ public class NotificacionIconFragment extends AbstractFragment {
 
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initNotificationsReminder();
     }
 
     @Override
@@ -61,6 +57,12 @@ public class NotificacionIconFragment extends AbstractFragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        initNotificationsReminder();
+    }
+
     private void actualizarNotificaciones(final int noLeidasCount) {
 //        MposApplication.getInstance().setNotisNoLeidas(noLeidasCount);
 
@@ -77,11 +79,13 @@ public class NotificacionIconFragment extends AbstractFragment {
         if ( handler == null ) {
             handler = new Handler();
         }
+        final Context context = getActivity();
         if ( runnableCode == null ) {
             runnableCode = new Runnable() {
                 @Override
                 public void run() {
-                    Long timestamp = PreferenceManager.getNotificationTimestamp(getActivity());
+                    Log.e("","");
+                    Long timestamp = PreferenceManager.getNotificationTimestamp(context);
 
                     if ((timestamp + timelapse) < Calendar.getInstance().getTimeInMillis()) {
                         if (getActivity() instanceof OnNotificacionInteraction) {
@@ -90,7 +94,7 @@ public class NotificacionIconFragment extends AbstractFragment {
                                     getString(R.string.Cuerpo_notificacion_aviso)
                             );
                         }else{
-                            Toast.makeText(getActivity(), "La libreria notificaciones requiere que la actividad donde se ocupe implemente OnNotificacionInteraction", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "La libreria notificaciones requiere que la actividad donde se ocupe implemente OnNotificacionInteraction", Toast.LENGTH_SHORT).show();
                         }
                         PreferenceManager.putNotificationTimestamp(getActivity());
                     }
