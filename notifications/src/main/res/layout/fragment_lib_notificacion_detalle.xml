@@ -15,8 +15,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/iv_cerrar"
@@ -24,13 +23,6 @@
                     android:layout_height="40dp"
                     android:src="@drawable/ic_cerrar"
                     android:layout_alignParentEnd="true"/>
-
-                <ImageView
-                    android:id="@+id/iv_yaganaste"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_logo_vertical_blue"
-                    android:layout_alignParentStart="true"/>
             </RelativeLayout>
 
             <ScrollView
@@ -42,7 +34,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minWidth="400dp"
-                    android:padding="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="15dp"
                     tools:context=".secciones.notificaciones.NotificacionesFireStore">
 
                     <TextView
@@ -62,18 +56,17 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Titulo" />
 
-                    <TextView
+                    <ir.noghteh.JustifiedTextView
                         android:id="@+id/tv_mensaje"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
-                        android:breakStrategy="balanced"
-                        android:paddingRight="8dp"
                         android:textAlignment="textStart"
                         android:textColor="#5B6770"
                         android:textSize="18sp"
+                        android:padding="4dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"

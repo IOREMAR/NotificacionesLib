@@ -108,7 +108,7 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
         });
 
         holder.binding.tvListaTituloNotificacion.setText(notificacion.getTitulo());
-        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
+//        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
         holder.binding.ivNotificacion.setBackgroundResource(!notificacionLeidaSet.contains(notificacion.getId())? R.drawable.notification_bell: R.drawable.check_green);
