@@ -108,16 +108,15 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
 
         if (notificacionLeidaSet.contains(notificacion.getId())) {
             holder.binding.ivNotificacion.setVisibility(View.VISIBLE);
-            holder.binding.ivNotificacion.setColorFilter(Color.GRAY);
+            holder.binding.ivNotificacion.setColorFilter(Color.parseColor("#3C4C57"));
             holder.binding.tvListaTituloNotificacion.setTextColor(Color.GRAY);
             holder.binding.tvListaMensajeNotificacion.setTextColor(Color.GRAY);
         } else {
+            holder.binding.ivNotificacion.setVisibility(View.GONE);
             holder.binding.ivNotificacion.setColorFilter(null);
             holder.binding.tvListaTituloNotificacion.setTextColor(Color.parseColor("#3C4C57"));
             holder.binding.tvListaMensajeNotificacion.setTextColor(Color.parseColor("#00C2E2"));
         }
-
-        holder.binding.cardview.setBackgroundResource(notificacionLeidaSet.contains(notificacion.getId()) ? R.color.colorWhite : R.color.colorGrey);
     }
 
     public Date parseDate(final String fecha) {
