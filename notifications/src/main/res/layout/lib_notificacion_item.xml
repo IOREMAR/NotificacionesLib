@@ -11,11 +11,10 @@
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorWhite"
         app:cardCornerRadius="6dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="false"
-        android:focusableInTouchMode="false">
+        android:focusableInTouchMode="false"">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/rl_notificacion"

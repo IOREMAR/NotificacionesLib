@@ -112,12 +112,16 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
             holder.binding.tvListaTituloNotificacion.setTextColor(Color.GRAY);
             holder.binding.tvListaMensajeNotificacion.setTextColor(Color.GRAY);
             holder.binding.rlNotificacion.setBackgroundColor(Color.parseColor("#F5F5F5"));
+            holder.binding.cardview.setBackgroundColor(Color.parseColor("#F5F5F5"));
+            holder.binding.cardview.setAlpha(0.5f);
         } else {
             holder.binding.dNotification.setImageResource(R.drawable.icono_sistema);
             holder.binding.ivNotificacion.setVisibility(View.GONE);
             holder.binding.tvListaTituloNotificacion.setTextColor(Color.parseColor("#3C4C57"));
             holder.binding.tvListaMensajeNotificacion.setTextColor(Color.parseColor("#00C2E2"));
             holder.binding.rlNotificacion.setBackgroundColor(Color.WHITE);
+            holder.binding.cardview.setBackgroundColor(Color.WHITE);
+            holder.binding.cardview.setAlpha(1f);
         }
     }
 
