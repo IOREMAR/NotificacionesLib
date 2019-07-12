@@ -2,16 +2,14 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.pagatodo.notifications.databinding.LibNotificacionItemBinding;
 
@@ -27,7 +25,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TimeZone;
 
-public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNotificaciones.NotificacionesViewHolder> {
+public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotificaciones.NotificacionesViewHolder> {
 
     private final List<Notificacion> notificaciones = new ArrayList<>();
     private final NotificacionItemListener notificacionItemListener;
@@ -43,28 +41,24 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
         }
     };
 
-
-
-
-    public AdaptadorNotificaciones(Context context, final NotificacionItemListener notificacionItemListener){
+    public AdaptadorNotificaciones(Context context, final NotificacionItemListener notificacionItemListener) {
         this.notificacionItemListener = notificacionItemListener;
         this.notificacionLeidaSet = PreferenceManager.getNotificaciones(context);
     }
 
-    private void addNotificacionId(Context context, final String notificacionId){
+    private void addNotificacionId(Context context, final String notificacionId) {
         PreferenceManager.addNotificaciones(notificacionId, context);
         notificacionLeidaSet.add(notificacionId);
     }
 
     @Override
     public NotificacionesViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
-        final LibNotificacionItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.lib_notificacion_item, parent, false) ;
+        final LibNotificacionItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.lib_notificacion_item, parent, false);
         return new NotificacionesViewHolder(binding);
-
     }
 
-    public void add(final Notificacion notificacion){
-        if(!notificaciones.contains(notificacion)) {
+    public void add(final Notificacion notificacion) {
+        if (!notificaciones.contains(notificacion)) {
             notificaciones.add(notificacion);
             sortNotificaciones();
             notifyItemChanged(notificaciones.indexOf(notificacion));
@@ -72,15 +66,15 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
         }
     }
 
-    public void update(final Notificacion notificacion){
-       if (notificaciones.contains(notificacion)) {
-           final int itemIndex = notificaciones.indexOf(notificacion);
-           notificaciones.set(itemIndex, notificacion);
-           notifyItemChanged(itemIndex);
-       }
+    public void update(final Notificacion notificacion) {
+        if (notificaciones.contains(notificacion)) {
+            final int itemIndex = notificaciones.indexOf(notificacion);
+            notificaciones.set(itemIndex, notificacion);
+            notifyItemChanged(itemIndex);
+        }
     }
 
-    public void remove(final Notificacion notificacion){
+    public void remove(final Notificacion notificacion) {
         if (notificaciones.contains(notificacion)) {
             final int itemIndex = notificaciones.indexOf(notificacion);
             notificaciones.remove(itemIndex);
@@ -89,7 +83,7 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
         }
     }
 
-    private void sortNotificaciones(){
+    private void sortNotificaciones() {
         Collections.sort(notificaciones, DATE_COMPARATOR);
     }
 
@@ -102,10 +96,9 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
         holder.binding.rlNotificacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                notificacionItemListener.onNotificacionSelected(notificacion,notificacion.getId());
+                notificacionItemListener.onNotificacionSelected(notificacion, notificacion.getId());
                 addNotificacionId(holder.binding.getRoot().getContext(), notificacion.getId());
                 notifyItemChanged(position);
-
             }
         });
 
@@ -113,55 +106,47 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
 //        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
-        if(notificacionLeidaSet.contains(notificacion.getId())) {
+        if (notificacionLeidaSet.contains(notificacion.getId())) {
             holder.binding.ivNotificacion.setVisibility(View.VISIBLE);
-            holder.binding.ivNotificacion.setImageTintList(ColorStateList.valueOf(Color.GRAY));
+            holder.binding.ivNotificacion.setColorFilter(Color.GRAY);
+            holder.binding.tvListaTituloNotificacion.setTextColor(Color.GRAY);
+            holder.binding.tvListaMensajeNotificacion.setTextColor(Color.GRAY);
         } else {
-            holder.binding.ivNotificacion.setVisibility(View.GONE);
-            holder.binding.ivNotificacion.setImageTintList(null);
+            holder.binding.ivNotificacion.setColorFilter(null);
+            holder.binding.tvListaTituloNotificacion.setTextColor(Color.parseColor("#3C4C57"));
+            holder.binding.tvListaMensajeNotificacion.setTextColor(Color.parseColor("#00C2E2"));
         }
 
-        if(!notificacionLeidaSet.contains(notificacion.getId())){
-            final Animation animation = AnimationUtils.loadAnimation(holder.binding.cardview.getContext(), R.anim.parpadeo);
-            holder.binding.ivNotificacion.startAnimation(animation);
-        }
-       holder.binding.cardview.setBackgroundResource(notificacionLeidaSet.contains(notificacion.getId()) ? R.color.colorWhite: R.color.colorGrey);
+        holder.binding.cardview.setBackgroundResource(notificacionLeidaSet.contains(notificacion.getId()) ? R.color.colorWhite : R.color.colorGrey);
     }
 
-
-    public Date parseDate(final String fecha ){
+    public Date parseDate(final String fecha) {
         try {
 
             notiDateFormatmili.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-           return  notiDateFormatmili.parse(fecha);
-        }catch (final ParseException exc){
-
+            return notiDateFormatmili.parse(fecha);
+        } catch (final ParseException exc) {
 
             return new Date();
         }
-
     }
-
-
 
     @Override
     public int getItemCount() {
         return notificaciones.size();
     }
 
-
-
     class NotificacionesViewHolder extends RecyclerView.ViewHolder {
         LibNotificacionItemBinding binding;
+
         NotificacionesViewHolder(final LibNotificacionItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
 
-    public interface NotificacionItemListener{
+    public interface NotificacionItemListener {
         void onNotificacionSelected(Notificacion notificacion, String idLeida);
     }
-
 }
