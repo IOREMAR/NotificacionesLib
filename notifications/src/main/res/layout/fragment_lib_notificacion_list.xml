@@ -11,7 +11,7 @@
             android:layout_gravity="center_horizontal"
            >
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -21,11 +21,13 @@
             <ImageView
                 android:id="@+id/iv_cerrar"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/icono_back"
-                android:layout_gravity="center_vertical"/>
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/tv_titulo_notificaciones"
@@ -33,13 +35,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Centro de Mensajes:"
+                android:text="Notificaciones"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#00C2E2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
 
         <ProgressBar
@@ -55,11 +60,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_notificaciones"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scrollbars="vertical"
             android:scrollbarThumbVertical="@android:color/holo_blue_dark"
-            android:layout_weight="1"
             android:layout_marginTop="28dp"
             tools:listitem="@layout/lib_notificacion_item"/>
 
