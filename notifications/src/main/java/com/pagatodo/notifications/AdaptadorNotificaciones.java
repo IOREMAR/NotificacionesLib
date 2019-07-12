@@ -2,7 +2,9 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -111,7 +113,14 @@ public class AdaptadorNotificaciones  extends RecyclerView.Adapter<AdaptadorNoti
 //        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
-        holder.binding.ivNotificacion.setBackgroundResource(!notificacionLeidaSet.contains(notificacion.getId())? R.drawable.notification_bell: R.drawable.check_green);
+        if(notificacionLeidaSet.contains(notificacion.getId())) {
+            holder.binding.ivNotificacion.setVisibility(View.VISIBLE);
+            holder.binding.ivNotificacion.setImageTintList(ColorStateList.valueOf(Color.GRAY));
+        } else {
+            holder.binding.ivNotificacion.setVisibility(View.GONE);
+            holder.binding.ivNotificacion.setImageTintList(null);
+        }
+
         if(!notificacionLeidaSet.contains(notificacion.getId())){
             final Animation animation = AnimationUtils.loadAnimation(holder.binding.cardview.getContext(), R.anim.parpadeo);
             holder.binding.ivNotificacion.startAnimation(animation);
