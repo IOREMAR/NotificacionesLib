@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentLibNotificacionListBinding;
 
 
-public class ListaNotificacionesFragment extends AbstractFragment {
+public class ListaNotificacionesFragment extends AbstractDialogFragment {
 
     private AdaptadorNotificaciones adaptador;
     private FragmentLibNotificacionListBinding binding;
@@ -31,7 +31,6 @@ public class ListaNotificacionesFragment extends AbstractFragment {
         initUI(inflater,container);
         return binding.getRoot();
     }
-
 
     private void initUI(final LayoutInflater inflater, final ViewGroup container) {
 

@@ -26,7 +26,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.pagatodo.notifications.databinding.FragmentLibNotificacionDetalleBinding;
 import com.squareup.picasso.Picasso;
 
-public class NotificacionDetalleFragment extends AbstractFragment {//GOD CLASS
+public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD CLASS
 
     private static final String NOTIFICATION_KEY= "notification_key";
     private Notificacion notificacion;

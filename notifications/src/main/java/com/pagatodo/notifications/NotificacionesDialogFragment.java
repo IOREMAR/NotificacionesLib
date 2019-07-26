@@ -18,9 +18,7 @@ import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBin
 
 import java.util.Objects;
 
-public class NotificacionesDialogFragment extends AbstractFragment {
-
-
+public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
     //----------UI-------------------------------------------------------
     private FragmentLibDialogNotificacionesBinding binding;
@@ -32,10 +30,11 @@ public class NotificacionesDialogFragment extends AbstractFragment {
     private boolean isLandScape;
     ListaNotificacionesFragment fragmentLista;
 
-    public void loadFragmentLista(){
+    public void loadFragmentLista() {
         binding.configMenuDetail.setVisibility(isLandScape ? View.GONE : View.VISIBLE);
         cargarFragment(getChildFragmentManager(), fragmentLista, R.id.config_menu_items);
     }
+
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +83,8 @@ public class NotificacionesDialogFragment extends AbstractFragment {
         }
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public boolean onKey( View v, int keyCode, KeyEvent event ) {
-                if( keyCode == KeyEvent.KEYCODE_BACK ) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
                     return true;
                 }
                 return false;
@@ -103,14 +102,13 @@ public class NotificacionesDialogFragment extends AbstractFragment {
         } else {
             getFragmentManager().popBackStack();
         }
-
     }
 
     public void setNotificacionIconFragment(final NotificacionIconFragment notificacionIconFragment) {
         this.notificacionIconFragment = notificacionIconFragment;
     }
 
-    public void seleccionaNotificacion( final Notificacion notificacion) {
+    public void seleccionaNotificacion(final Notificacion notificacion) {
 
         binding.configMenuDetail.setVisibility(View.VISIBLE);
         cargarFragment(getChildFragmentManager(), NotificacionDetalleFragment.newInstance(notificacion), detailId);
@@ -120,9 +118,9 @@ public class NotificacionesDialogFragment extends AbstractFragment {
         if (binding.configMenuDetail.getVisibility() == View.VISIBLE) {
             final Fragment fragment = getChildFragmentManager().findFragmentByTag(NotificacionDetalleFragment.class.getSimpleName());
             if (fragment != null
-                && fragment.isVisible()
-                && ((NotificacionDetalleFragment) fragment).getNotificationId().equals(notificacion.getId())) {
-                    cargarFragment(getChildFragmentManager(), NotificacionDetalleFragment.newInstance(notificacion), detailId);
+                    && fragment.isVisible()
+                    && ((NotificacionDetalleFragment) fragment).getNotificationId().equals(notificacion.getId())) {
+                cargarFragment(getChildFragmentManager(), NotificacionDetalleFragment.newInstance(notificacion), detailId);
             }
         }
     }

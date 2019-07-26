@@ -35,12 +35,12 @@ public class NotificacionesProvider {
         appContext = context;
         obtenerTotalNotificacionesFirestore(context.getString(
                 R.string.firestore_notificacion,
-                AbstractFragment.applicationId,
+                AbstractDialogFragment.applicationId,
                 "all"));
         obtenerTotalNotificacionesFirestore( context.getString(
                 R.string.firestore_notificacion,
-                AbstractFragment.applicationId,
-                AbstractFragment.tpv));
+                AbstractDialogFragment.applicationId,
+                AbstractDialogFragment.tpv));
 
         PreferenceManager.addNotificacionesLeidasListener(context, preferenceListener);
 

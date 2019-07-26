@@ -8,7 +8,7 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 
-public class AbstractFragment extends DialogFragment {
+public class AbstractDialogFragment extends DialogFragment {
 
     public static Handler handler;
     public static Runnable runnableCode;
@@ -19,15 +19,16 @@ public class AbstractFragment extends DialogFragment {
 
 
     public static void initIdentity(String applicationId, String tpv){
-        AbstractFragment.applicationId = applicationId;
-        AbstractFragment.tpv = tpv;
+        AbstractDialogFragment.applicationId = applicationId;
+        AbstractDialogFragment.tpv = tpv;
     }
 
-    public void cargarFragment(FragmentManager fragmentManager, final Fragment fragment, final @IdRes int containerId) {
-        final FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
-        transaction.commitAllowingStateLoss();
+    public void cargarFragment(FragmentManager fragmentManager, final DialogFragment fragment, final @IdRes int containerId) {
+//        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
+//        transaction.commitAllowingStateLoss();
+        fragment.show(fragmentManager, fragment.getClass().getSimpleName());
     }
 
     public boolean isLandscape(){

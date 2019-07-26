@@ -1,7 +1,6 @@
 package com.pagatodo.notifications;
 
 import android.app.Activity;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +16,7 @@ import java.util.Calendar;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class NotificacionIconFragment extends AbstractFragment {
+public class NotificacionIconFragment extends AbstractDialogFragment {
 
     private static final String TAG = NotificacionIconFragment.class.getName();
     private FragmentLibNotificacionIconBinding binding;
