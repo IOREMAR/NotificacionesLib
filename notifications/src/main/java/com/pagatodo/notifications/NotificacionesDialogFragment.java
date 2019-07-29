@@ -77,7 +77,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 //            params.rightMargin = 20;
 //            params.bottomMargin = 20;
 //            params.leftMargin = 20;
-//            params.gravity = Gravity.CENTER;
+            params.gravity = Gravity.CENTER;
             binding.getRoot().setLayoutParams(params);
             getDialog().getWindow().setBackgroundDrawableResource(R.drawable.background_notifications_fragment);
         }
