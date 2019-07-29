@@ -72,14 +72,14 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         super.onStart();
         final Dialog dialog = getDialog();
         if (dialog != null) {
-            final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.MATCH_PARENT);
-            params.topMargin = 20;
-            params.rightMargin = 20;
-            params.bottomMargin = 20;
-            params.leftMargin = 20;
+            final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+//            params.topMargin = 20;
+//            params.rightMargin = 20;
+//            params.bottomMargin = 20;
+//            params.leftMargin = 20;
             params.gravity = Gravity.CENTER;
             binding.getRoot().setLayoutParams(params);
-            getDialog().getWindow().setBackgroundDrawableResource(R.drawable.background_notifications_fragment);
+//            getDialog().getWindow().setBackgroundDrawableResource(R.drawable.background_notifications_fragment);
         }
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override

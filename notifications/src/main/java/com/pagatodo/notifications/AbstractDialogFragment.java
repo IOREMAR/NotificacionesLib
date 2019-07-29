@@ -2,6 +2,7 @@ package com.pagatodo.notifications;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -20,11 +21,10 @@ public class AbstractDialogFragment extends DialogFragment {
     }
 
     public void cargarFragment(FragmentManager fragmentManager, final DialogFragment fragment, final @IdRes int containerId) {
-//        final FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
-//        transaction.commitAllowingStateLoss();
-        fragment.show(fragmentManager, fragment.getClass().getSimpleName());
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
+        transaction.commitAllowingStateLoss();
     }
 
     public boolean isLandscape() {
