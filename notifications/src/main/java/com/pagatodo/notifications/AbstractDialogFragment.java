@@ -1,9 +1,7 @@
 package com.pagatodo.notifications;
 
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -16,9 +14,7 @@ public class AbstractDialogFragment extends DialogFragment {
     public static String applicationId;
     public static String tpv;
 
-
-
-    public static void initIdentity(String applicationId, String tpv){
+    public static void initIdentity(String applicationId, String tpv) {
         AbstractDialogFragment.applicationId = applicationId;
         AbstractDialogFragment.tpv = tpv;
     }
@@ -31,11 +27,7 @@ public class AbstractDialogFragment extends DialogFragment {
         fragment.show(fragmentManager, fragment.getClass().getSimpleName());
     }
 
-    public boolean isLandscape(){
+    public boolean isLandscape() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-
     }
-
-
-
 }
