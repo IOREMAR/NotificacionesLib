@@ -6,13 +6,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
+        android:background="@drawable/background_notifications_fragment"
         android:padding="8dp">
 
         <FrameLayout
             android:id="@+id/config_menu_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
         <FrameLayout
             android:id="@+id/config_menu_detail"

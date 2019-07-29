@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -44,7 +46,11 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         initUI(inflater, container);
-        Objects.requireNonNull(getDialog().getWindow()).requestFeature(Window.FEATURE_NO_TITLE);
+//        Objects.requireNonNull(getDialog().getWindow()).requestFeature(Window.FEATURE_NO_TITLE);
+        if (getDialog() != null && getDialog().getWindow() != null) {
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        }
         return binding.getRoot();
     }
 
@@ -79,7 +85,6 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 //            params.leftMargin = 20;
             params.gravity = Gravity.CENTER;
             binding.getRoot().setLayoutParams(params);
-            getDialog().getWindow().setBackgroundDrawableResource(R.drawable.background_notifications_fragment);
         }
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override
