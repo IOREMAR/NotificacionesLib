@@ -77,32 +77,8 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         final Dialog dialog = getDialog();
         if (dialog != null) {
             final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-//            params.topMargin = 20;
-//            params.rightMargin = 20;
-//            params.bottomMargin = 20;
-//            params.leftMargin = 20;
             params.gravity = Gravity.CENTER;
             binding.getRoot().setLayoutParams(params);
-        }
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
-    public void onBackPressed() {
-
-        int count = getFragmentManager().getBackStackEntryCount();
-
-        if (count == 0) {
-            getFragmentManager().popBackStack();
-        } else {
-            getFragmentManager().popBackStack();
         }
     }
 
@@ -111,7 +87,6 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     }
 
     public void seleccionaNotificacion(final Notificacion notificacion) {
-
         binding.configMenuDetail.setVisibility(View.VISIBLE);
         cargarFragment(getChildFragmentManager(), NotificacionDetalleFragment.newInstance(notificacion), detailId);
     }

@@ -28,6 +28,14 @@ public class AbstractDialogFragment extends DialogFragment {
         transaction.commitAllowingStateLoss();
     }
 
+    public void cargarFragmentConReturn(FragmentManager fragmentManager, final Fragment fragment, final @IdRes int containerId){
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.replace(containerId, fragment, fragment.getClass().getSimpleName());
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     public boolean isLandscape() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }

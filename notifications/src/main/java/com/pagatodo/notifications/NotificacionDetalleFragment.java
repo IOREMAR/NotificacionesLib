@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -83,6 +84,21 @@ public class NotificacionDetalleFragment extends Fragment {//GOD CLASS
                 return false;
             }
         });
+
+        binding.getRoot().setFocusableInTouchMode(true);
+        binding.getRoot().requestFocus();
+        binding.getRoot().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                if( keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_UP)
+                {
+                    returnToNotificationsList();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         return binding.getRoot();
     }
 
