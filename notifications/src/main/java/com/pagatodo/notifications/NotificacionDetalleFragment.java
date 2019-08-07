@@ -1,6 +1,6 @@
 package com.pagatodo.notifications;
 
-import android.app.Dialog;
+import android.app.Fragment;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
@@ -27,7 +27,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.pagatodo.notifications.databinding.FragmentLibNotificacionDetalleBinding;
 import com.squareup.picasso.Picasso;
 
-public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD CLASS
+public class NotificacionDetalleFragment extends Fragment {//GOD CLASS
 
     private static final String NOTIFICATION_KEY = "notification_key";
     private Notificacion notificacion;
@@ -86,23 +86,13 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
         return binding.getRoot();
     }
 
-    private void returnToNotificationsList() {
+    public void returnToNotificationsList() {
         if (getParentFragment() instanceof NotificacionesDialogFragment) {
             binding.pvPlayer.setVisibility(View.GONE);
             clearPlayer();
             ocultarNotificacionDetalle();
             ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
         }
-    }
-
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new Dialog(getActivity(), getTheme()) {
-            @Override
-            public void onBackPressed() {
-                returnToNotificationsList();
-            }
-        };
     }
 
     private void ocultarNotificacionDetalle() {
