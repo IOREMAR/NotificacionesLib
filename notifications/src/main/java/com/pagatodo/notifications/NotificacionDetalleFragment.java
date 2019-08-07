@@ -1,5 +1,6 @@
 package com.pagatodo.notifications;
 
+import android.app.Dialog;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
@@ -28,40 +29,20 @@ import com.squareup.picasso.Picasso;
 
 public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD CLASS
 
-    private static final String NOTIFICATION_KEY= "notification_key";
+    private static final String NOTIFICATION_KEY = "notification_key";
     private Notificacion notificacion;
     private SimpleExoPlayer simpleExoPlayer;
     private FragmentLibNotificacionDetalleBinding binding;
 
-    public boolean isTablet(){
+    public boolean isTablet() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
-
-
-//    @Override
-//    protected boolean isTomandoBack() {
-//
-//        clearPlayer();
-//
-//        if(isTablet()){
-//           return false;
-//        }
-//
-//        else {
-//            if ( getParentFragment() instanceof NotificacionesDialogFragment) {
-//                ocultarNotificacionDetalle();
-//                ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
-//            }
-//            return true;
-//        }
-//    }
 
     public NotificacionDetalleFragment() {
         // Required empty public constructor
     }
 
-
-    public static NotificacionDetalleFragment newInstance(final Notificacion notificacion){
+    public static NotificacionDetalleFragment newInstance(final Notificacion notificacion) {
         final Bundle args = new Bundle();
         args.putSerializable(NOTIFICATION_KEY, notificacion);
 
@@ -74,15 +55,15 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
     public void onCreate(final @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
-        if (args!=null) {
+        if (args != null) {
             notificacion = (Notificacion) args.getSerializable(NOTIFICATION_KEY);
         }
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.O)
+    //    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
-                            final Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         ImageView imageClose;
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lib_notificacion_detalle, container, false);
         binding.tvTitulo.setText(notificacion.getTitulo());
@@ -92,13 +73,7 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
         imageClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                if ( getParentFragment() instanceof NotificacionesDialogFragment) {
-                    binding.pvPlayer.setVisibility(View.GONE);
-                    clearPlayer();
-                    ocultarNotificacionDetalle();
-                    ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
-                }
-
+                returnToNotificationsList();
             }
         });
         binding.svContainer.setOnTouchListener(new View.OnTouchListener() {
@@ -111,7 +86,26 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
         return binding.getRoot();
     }
 
-    private void ocultarNotificacionDetalle(){
+    private void returnToNotificationsList() {
+        if (getParentFragment() instanceof NotificacionesDialogFragment) {
+            binding.pvPlayer.setVisibility(View.GONE);
+            clearPlayer();
+            ocultarNotificacionDetalle();
+            ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
+        }
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new Dialog(getActivity(), getTheme()) {
+            @Override
+            public void onBackPressed() {
+                returnToNotificationsList();
+            }
+        };
+    }
+
+    private void ocultarNotificacionDetalle() {
         binding.cvNotificacionDetalle.setVisibility(View.GONE);
     }
 
@@ -126,7 +120,6 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
             binding.pvPlayer.setVisibility(View.GONE);
             binding.pbNotificacionVideo.setVisibility(View.GONE);
         }
-
     }
 
     private void clearPlayer() {
@@ -146,7 +139,6 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
 
         return new ExtractorMediaSource.Factory(dataSourceFactory).
                 createMediaSource(Uri.parse(url));
-
     }
 
     private void loadImage(final ImageView imageView, final String url) {
@@ -161,7 +153,6 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
                     @Override
                     public void onError() {
                         binding.pbNotificacionImage.setVisibility(View.GONE);
-
                     }
                 });
         setImageNotificationListener(imageView, url);
@@ -177,12 +168,12 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
         });
     }
 
-    private boolean hasVideo(){
-        return notificacion.getEnlace()!=null && !notificacion.getEnlace().isEmpty();
+    private boolean hasVideo() {
+        return notificacion.getEnlace() != null && !notificacion.getEnlace().isEmpty();
     }
 
-    private boolean hasImage(){
-        return notificacion.getImagen()!=null && !notificacion.getImagen().isEmpty();
+    private boolean hasImage() {
+        return notificacion.getImagen() != null && !notificacion.getImagen().isEmpty();
     }
 
     @Override
@@ -204,12 +195,12 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
     @Override
     public void onResume() {
         super.onResume();
-        if (Util.SDK_INT <= 23 ) {
+        if (Util.SDK_INT <= 23) {
             initPlayer();
         }
-        if(hasImage()){
+        if (hasImage()) {
             loadImage(binding.ivImagen, notificacion.getImagen());
-        }else{
+        } else {
             binding.ivImagen.setVisibility(View.GONE);
             binding.pbNotificacionImage.setVisibility(View.GONE);
         }
@@ -218,10 +209,9 @@ public class NotificacionDetalleFragment extends AbstractDialogFragment {//GOD C
     @Override
     public void onStart() {
         super.onStart();
-        if (Util.SDK_INT > 23 ) {
+        if (Util.SDK_INT > 23) {
             initPlayer();
         }
-
     }
 
     public void onFailure(final Throwable throwable) {

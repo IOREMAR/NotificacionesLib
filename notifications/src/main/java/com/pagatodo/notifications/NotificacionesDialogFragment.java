@@ -18,8 +18,6 @@ import android.widget.FrameLayout;
 
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
 
-import java.util.Objects;
-
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
     //----------UI-------------------------------------------------------
@@ -102,7 +100,6 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         int count = getFragmentManager().getBackStackEntryCount();
 
         if (count == 0) {
-
             getFragmentManager().popBackStack();
         } else {
             getFragmentManager().popBackStack();
