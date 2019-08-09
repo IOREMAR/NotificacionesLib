@@ -68,22 +68,22 @@
                     android:textSize="12sp"
                     android:layout_marginRight="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/iv_notificacion"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_lista_titulo_notificacion"
                     tools:text="@tools:sample/lorem" />
 
-                <ImageView
-                    android:id="@+id/iv_notificacion"
-                    android:layout_width="26dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ver"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:visibility="visible"/>
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_notificacion"-->
+                    <!--android:layout_width="26dp"-->
+                    <!--android:layout_height="16dp"-->
+                    <!--android:src="@drawable/ver"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:visibility="gone"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--tools:visibility="visible"/>-->
 
             </android.support.constraint.ConstraintLayout>
 
