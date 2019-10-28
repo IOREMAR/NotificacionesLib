@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String notificacionApplicationId = "com_pagatodo_apidemo_PE_debug";
+        String notificacionApplicationId = "com.pagatodo.apidemo.wallet/CO";
 //        String tpvcod = ApiInstance.getInstance().getDatosSesion().getDatosTPV().getTpvcod();
-        String tpvcod = "00001991";
+        String tpvcod = "00001849";
         com.pagatodo.notifications.AbstractDialogFragment.initIdentity(
                 notificacionApplicationId,
                 tpvcod
