@@ -3,67 +3,46 @@ package com.pagatodo.notifications;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.pagatodo.notifications.databinding.FragmentLibNotificacionListBinding;
+import com.pagatodo.notifications.databinding.FragmentListMensajesBinding;
 
-public class ListaNotificacionesFragment extends AbstractDialogFragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ListMensajesFragment extends AbstractDialogFragment {
 
-    private AdaptadorNotificaciones adaptador;
-    private FragmentLibNotificacionListBinding binding;
+    private FragmentListMensajesBinding binding;
     private int numNotificacionesFirestore;
+    private AdaptadorMensajes adaptador;
 
-    @Nullable
     @Override
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         initUI(inflater,container);
-
         return binding.getRoot();
     }
 
-    private void initUI(final LayoutInflater inflater, final ViewGroup container) {
-
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(inflater.getContext());
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lib_notificacion_list, container, false);
-
-
-        binding.rvNotificaciones.setLayoutManager(layoutManager);
-        adaptador = new AdaptadorNotificaciones(getActivity(), new AdaptadorNotificaciones.NotificacionItemListener() {
-            @Override
-            public void onNotificacionSelected(final Notificacion notificacion, final String notiLeida) {
-                if (getParentFragment() instanceof NotificacionesDialogFragment) {
-                    ((NotificacionesDialogFragment) getParentFragment()).seleccionaNotificacion(notificacion);
-                }
-            }
-        });
-        binding.rvNotificaciones.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(final View view, final MotionEvent motionEvent) {
-                PreferenceManager.putNotificationTimestamp(getActivity());
-                return false;
-            }
-        });
-
-        numNotificacionesFirestore=0;
+    private void initUI(LayoutInflater inflater, ViewGroup container) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_mensajes, container, false);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false));
+        adaptador = new AdaptadorMensajes();
+        numNotificacionesFirestore = 0;
         initNotificacionListener(getString(
-                R.string.firestore_notificacion,
-                applicationId,
-                "all"));
-        initNotificacionListener(getString(
-                R.string.firestore_notificacion,
+                R.string.firestore_mensajes,
                 applicationId,
                 tpv));
-        binding.rvNotificaciones.setAdapter(adaptador);
+        binding.recycler.setAdapter(adaptador);
     }
 
     private void initNotificacionListener(final String path) {//NOSONAR complejo
@@ -75,7 +54,7 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
             @Override
             public void onEvent(final @Nullable QuerySnapshot snapshots,
                                 final @Nullable FirebaseFirestoreException firestoreException) {
-                binding.pbNotificaciones.setVisibility(View.GONE);
+                binding.loadingBar.setVisibility(View.GONE);
                 if (firestoreException != null) {
                     return;
                 }
@@ -109,7 +88,7 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
             private void mostrarAvisoSinNotificaciones(final int numNotificacionesFirestore){
                 if (numNotificacionesFirestore==0){
                     binding.tvAvisoNotificaciones.setVisibility(View.VISIBLE);
-                    binding.pbNotificaciones.setVisibility(View.GONE);
+                    binding.loadingBar.setVisibility(View.GONE);
                 } else {
                     binding.tvAvisoNotificaciones.setVisibility(View.GONE);
                 }

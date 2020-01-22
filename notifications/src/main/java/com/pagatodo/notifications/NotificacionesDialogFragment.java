@@ -2,11 +2,11 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
 
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
@@ -27,11 +26,9 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     //----- Var ----------------------------------------------------------
     int detailId;
     private boolean isLandScape;
-    ListaNotificacionesFragment fragmentLista;
 
     public void loadFragmentLista() {
         binding.configMenuDetail.setVisibility(isLandScape ? View.GONE : View.VISIBLE);
-        cargarFragment(getChildFragmentManager(), fragmentLista, R.id.config_menu_items);
     }
 
     @Override
@@ -57,14 +54,22 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         detailId = isLandScape ? R.id.config_menu_detail : R.id.config_menu_items;
         binding.configMenuDetail.setVisibility(isLandScape ? View.VISIBLE : View.GONE);
 
-        fragmentLista = new ListaNotificacionesFragment();
-        cargarFragment(getChildFragmentManager(), fragmentLista, R.id.config_menu_items);
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager());
+        binding.viewPager.setAdapter(pagerAdapter);
+        binding.tablayout.setupWithViewPager(binding.viewPager);
 
         binding.getRoot().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent motionEvent) {
                 PreferenceManager.putNotificationTimestamp(getActivity());
                 return false;
+            }
+        });
+
+        binding.ivCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                dismiss();
             }
         });
     }

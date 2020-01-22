@@ -1,12 +1,12 @@
 package com.pagatodo.notifications;
 
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.annotation.IdRes;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 public class AbstractDialogFragment extends DialogFragment {
 

@@ -17,7 +17,7 @@ public class Notificacion implements Serializable{
     private String imagen;
     private String enlace;
     private String estatus = NO_LEIDA;
-
+    private String campo1;
 
     public Notificacion(){
         this.idNotificacion = "";
@@ -26,6 +26,7 @@ public class Notificacion implements Serializable{
         this.mensaje = "";
         this.enlace = "";
         this.imagen = "";
+        this.campo1 = "";
     }
 
     public String getId() {
@@ -89,6 +90,13 @@ public class Notificacion implements Serializable{
         this.estatus = estatus;
     }
 
+    public String getCampo1() {
+        return campo1;
+    }
+
+    public void setCampo1(String campo1) {
+        this.campo1 = campo1;
+    }
 
     @Override
     public int hashCode() {//NOPMD

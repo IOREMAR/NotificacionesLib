@@ -8,17 +8,15 @@
         android:orientation="vertical">
 
         <ProgressBar
-            android:id="@+id/pb_notificaciones"
+            android:id="@+id/loadingBar"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:paddingStart="7dp"
-            android:paddingEnd="7dp"
+            android:layout_gravity="center"
             tools:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_notificaciones"
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fafafc"
@@ -26,7 +24,7 @@
             android:layout_marginTop="28dp"
             android:scrollbarThumbVertical="@android:color/holo_blue_dark"
             android:scrollbars="vertical"
-            tools:listitem="@layout/lib_notificacion_item" />
+            tools:listitem="@layout/lib_notificacion_item_2" />
 
         <TextView
             android:id="@+id/tv_aviso_notificaciones"
