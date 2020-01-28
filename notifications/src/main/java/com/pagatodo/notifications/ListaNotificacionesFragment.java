@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -41,6 +42,10 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
         adaptador = new AdaptadorNotificaciones(getActivity(), new AdaptadorNotificaciones.NotificacionItemListener() {
             @Override
             public void onNotificacionSelected(final Notificacion notificacion, final String notiLeida) {
+                changeStatusNotification(notificacion,getString(
+                        R.string.firestore_notificacion,
+                        applicationId,
+                        tpv));
                 if (getParentFragment() instanceof NotificacionesDialogFragment) {
                     ((NotificacionesDialogFragment) getParentFragment()).seleccionaNotificacion(notificacion);
                 }
@@ -54,7 +59,10 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
             }
         });
 
+
+
         numNotificacionesFirestore=0;
+
         initNotificacionListener(getString(
                 R.string.firestore_notificacion,
                 applicationId,
@@ -66,10 +74,18 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
         binding.rvNotificaciones.setAdapter(adaptador);
     }
 
+    private void changeStatusNotification(Notificacion notificacion, String path){
+        final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
+
+        //Obtener el documento que se va a modificar y cambiar el estatus a leido
+        DocumentReference notificationReference = databasefb.collection(path).document(notificacion.getId());
+        notificationReference.update("leida",true);
+    }
+
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
         final Query query = databasefb.collection(path);
-
+        //final Query query = databasefb.collection("/notification/com.pagatodo.yawallet/CO/00002568/Mensajes/");
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -80,6 +96,7 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
                     return;
                 }
                 numNotificacionesFirestore += snapshots.getDocuments().size();
+
                 mostrarAvisoSinNotificaciones(numNotificacionesFirestore);
                 if (!snapshots.getDocumentChanges().isEmpty()) {
                     Notificacion notificacion;

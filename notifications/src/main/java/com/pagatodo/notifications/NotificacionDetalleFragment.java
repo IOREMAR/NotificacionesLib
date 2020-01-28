@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -24,6 +25,9 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pagatodo.notifications.databinding.FragmentLibNotificacionDetalleBinding;
 import com.squareup.picasso.Picasso;
 
@@ -37,6 +41,7 @@ public class NotificacionDetalleFragment extends Fragment {//GOD CLASS
     public boolean isTablet() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
+
 
     public NotificacionDetalleFragment() {
         // Required empty public constructor
@@ -100,6 +105,8 @@ public class NotificacionDetalleFragment extends Fragment {//GOD CLASS
 
         return binding.getRoot();
     }
+
+
 
     public void returnToNotificationsList() {
         if (getParentFragment() instanceof NotificacionesDialogFragment) {

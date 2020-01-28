@@ -38,6 +38,7 @@ public class ListMensajesFragment extends AbstractDialogFragment {
         binding.recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false));
         adaptador = new AdaptadorMensajes();
         numNotificacionesFirestore = 0;
+
         initNotificacionListener(getString(
                 R.string.firestore_mensajes,
                 applicationId,
@@ -48,6 +49,7 @@ public class ListMensajesFragment extends AbstractDialogFragment {
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
         final Query query = databasefb.collection(path);
+        //final Query query = databasefb.collection("/notification/com.pagatodo.yawallet/CO/00002568/Inbox/");
 
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {

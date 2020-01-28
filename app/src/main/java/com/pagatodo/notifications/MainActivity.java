@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         String notificacionApplicationId = "com.pagatodo.apidemo.wallet/CO";
 //        String tpvcod = ApiInstance.getInstance().getDatosSesion().getDatosTPV().getTpvcod();
-        String tpvcod = "00001849";
+        String tpvcod = "00002568";
         com.pagatodo.notifications.AbstractDialogFragment.initIdentity(
                 notificacionApplicationId,
                 tpvcod
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private void abrirNotificaciones() {
         NotificacionesDialogFragment notificacionesDialogFragment = new NotificacionesDialogFragment();
         notificacionesDialogFragment.setNotificacionIconFragment(new NotificacionIconFragment());
-        notificacionesDialogFragment.show(getFragmentManager(), "");
+        notificacionesDialogFragment.show(getSupportFragmentManager(), "");
     }
 
     @Override

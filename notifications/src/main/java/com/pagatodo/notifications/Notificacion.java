@@ -17,6 +17,7 @@ public class Notificacion implements Serializable{
     private String imagen;
     private String enlace;
     private String estatus = NO_LEIDA;
+    private boolean leida;
     private String campo1;
 
     public Notificacion(){
@@ -39,7 +40,7 @@ public class Notificacion implements Serializable{
 
 
     public DateTime getFecha2(){
-       return   ISODateTimeFormat.dateTimeParser().parseDateTime(fecha);
+        return   ISODateTimeFormat.dateTimeParser().parseDateTime(fecha);
 
     }
     public String getFecha() {
@@ -96,6 +97,14 @@ public class Notificacion implements Serializable{
 
     public void setCampo1(String campo1) {
         this.campo1 = campo1;
+    }
+
+    public boolean isLeida() {
+        return leida;
+    }
+
+    public void setLeida(boolean leida) {
+        this.leida = leida;
     }
 
     @Override

@@ -106,7 +106,7 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
 //        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
-        if (notificacionLeidaSet.contains(notificacion.getId())) {
+        if (notificacion.isLeida()) {
             holder.binding.dNotification.setImageResource(R.drawable.icono_sistema_sistema);
 //            holder.binding.ivNotificacion.setVisibility(View.VISIBLE);
             holder.binding.tvListaTituloNotificacion.setTextColor(Color.GRAY);
