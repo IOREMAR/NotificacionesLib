@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,6 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
 
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
@@ -21,6 +30,8 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     //----------UI-------------------------------------------------------
     private FragmentLibDialogNotificacionesBinding binding;
     private NotificacionIconFragment notificacionIconFragment;
+    private int numberNotification=0;
+    private int numberAfiliaciones=0;
     //----- Inst ----------------------------------------------------------
 
     //----- Var ----------------------------------------------------------
@@ -30,6 +41,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     public void loadFragmentLista() {
         binding.configMenuDetail.setVisibility(isLandScape ? View.GONE : View.VISIBLE);
     }
+
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -58,6 +70,17 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         binding.viewPager.setAdapter(pagerAdapter);
         binding.tablayout.setupWithViewPager(binding.viewPager);
 
+        binding.tablayout.getTabAt(0).setCustomView(R.layout.layout_custom_tab_badge);
+        TextView txt1 = (TextView) binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_text);
+        txt1.setText("Notificaciones");
+
+        binding.tablayout.getTabAt(1).setCustomView(R.layout.layout_custom_tab_badge);
+        TextView txt3 = (TextView)binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
+        txt3.setText("Afiliaciones");
+
+
+        initMessagesModules();
+
         binding.getRoot().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent motionEvent) {
@@ -70,6 +93,79 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
             @Override
             public void onClick(final View view) {
                 dismiss();
+            }
+        });
+    }
+
+
+    private void loadNumbersBadge(){
+        TextView txt2 = (TextView) binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_badge);
+        TextView txt4 = (TextView) binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_badge);
+
+        if (numberNotification > 0){
+            txt2.setVisibility(View.VISIBLE);
+            txt2.setText(String.valueOf(numberNotification));
+        }else{
+            txt2.setVisibility(View.GONE);
+            txt2.setText(String.valueOf(numberNotification));
+        }
+
+        if(numberAfiliaciones>0) {
+            txt4.setVisibility(View.VISIBLE);
+            txt4.setText(String.valueOf(numberAfiliaciones));
+        }else{
+            txt4.setVisibility(View.GONE);
+            txt4.setText(String.valueOf(numberAfiliaciones));
+        }
+
+    }
+
+    private void initMessagesModules(){
+
+        final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
+
+        final Query queryMensajes = databasefb.collection(getString(
+                R.string.firestore_mensajes,
+                applicationId,
+                tpv));
+        final Query queryInbox = databasefb.collection(getString(
+                R.string.firestore_notificacion,
+                applicationId,
+                tpv));
+
+        queryMensajes.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(final @Nullable QuerySnapshot snapshots,
+                                final @Nullable FirebaseFirestoreException firestoreException) {
+                numberAfiliaciones=0;
+                numberAfiliaciones += snapshots.getDocuments().size();
+                loadNumbersBadge();
+            }
+        });
+
+        queryInbox.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(final @Nullable QuerySnapshot snapshots,
+                                final @Nullable FirebaseFirestoreException firestoreException) {
+
+                numberNotification = 0;
+
+                if(snapshots.getDocuments()!=null && !snapshots.getDocuments().isEmpty()){
+                    Notificacion notificacion;
+
+                    for(final DocumentSnapshot documentSnapshot : snapshots.getDocuments()){
+                        notificacion = parseNotificacion(documentSnapshot);
+                        if(!notificacion.isLeida()){
+                            numberNotification += 1;
+                        }
+                    }
+                }
+                loadNumbersBadge();
+            }
+            private Notificacion parseNotificacion(final DocumentSnapshot documentSnapshot){
+                final Notificacion notificacion = documentSnapshot.toObject(Notificacion.class);
+                notificacion.setId(documentSnapshot.getId());
+                return notificacion;
             }
         });
     }

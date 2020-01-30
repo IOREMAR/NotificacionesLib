@@ -5,7 +5,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +36,7 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
     private static final Comparator DATE_COMPARATOR = new Comparator<Notificacion>() {
         @Override
         public int compare(final Notificacion notificacion, final Notificacion noti) {
-            return noti.getFecha().compareTo(notificacion.getFecha());
+            return noti.getFechaEnvio().compareTo(notificacion.getFechaEnvio());
         }
     };
 
@@ -103,7 +102,7 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
         });
 
         holder.binding.tvListaTituloNotificacion.setText(notificacion.getTitulo());
-//        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFecha())));
+//        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFechaEnvio())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
         if (notificacion.isLeida()) {

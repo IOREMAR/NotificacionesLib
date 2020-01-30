@@ -11,7 +11,7 @@ public class Notificacion implements Serializable{
     public static final String NO_LEIDA = "NO_LEIDA";
 
     private String idNotificacion;
-    private String fecha;
+    private String fechaEnvio;
     private String titulo;
     private String mensaje;
     private String imagen;
@@ -22,7 +22,7 @@ public class Notificacion implements Serializable{
 
     public Notificacion(){
         this.idNotificacion = "";
-        this.fecha = "";
+        this.fechaEnvio = "";
         this.titulo = "";
         this.mensaje = "";
         this.enlace = "";
@@ -40,15 +40,15 @@ public class Notificacion implements Serializable{
 
 
     public DateTime getFecha2(){
-        return   ISODateTimeFormat.dateTimeParser().parseDateTime(fecha);
+        return   ISODateTimeFormat.dateTimeParser().parseDateTime(fechaEnvio);
 
     }
-    public String getFecha() {
-        return fecha;
+    public String getFechaEnvio() {
+        return fechaEnvio;
     }
 
-    public void setFecha(final String fecha) {
-        this.fecha = fecha;
+    public void setFechaEnvio(final String fechaEnvio) {
+        this.fechaEnvio = fechaEnvio;
     }
 
     public String getTitulo() {

@@ -27,7 +27,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
     private static final Comparator DATE_COMPARATOR = new Comparator<Notificacion>() {
         @Override
         public int compare(final Notificacion notificacion, final Notificacion noti) {
-            return noti.getFecha().compareTo(notificacion.getFecha());
+            return noti.getFechaEnvio().compareTo(notificacion.getFechaEnvio());
         }
     };
 
@@ -43,8 +43,8 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
     public void onBindViewHolder(@NonNull MensajesVieHolder holder, int position) {
         final Notificacion notificacion = notificaciones.get(position);
         holder.binding.tvMensaje.setText(notificacion.getMensaje());
-        holder.binding.tvDay.setText(obtenDia(notificacion.getCampo1()));
-        holder.binding.tvMthYr.setText(formatearFecha(notificacion.getCampo1()));
+        holder.binding.tvDay.setText(obtenDia(notificacion.getFechaEnvio()));
+        holder.binding.tvMthYr.setText(formatearFecha(notificacion.getFechaEnvio()));
     }
 
     private CharSequence formatearFecha(String campo1) {
@@ -66,7 +66,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
             date = dateFormat.parse(campo1);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            return String.valueOf(calendar.get(Calendar.DAY_OF_YEAR));
+            return String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
         } catch (ParseException e) {
             e.printStackTrace();
             return "00";
