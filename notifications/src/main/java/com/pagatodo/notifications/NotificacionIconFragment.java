@@ -1,7 +1,7 @@
 package com.pagatodo.notifications;
 
 import android.app.Activity;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;

@@ -2,13 +2,13 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,7 +28,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
@@ -83,7 +82,6 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         binding.tablayout.getTabAt(1).setCustomView(R.layout.layout_custom_tab_badge);
         TextView txt3 = (TextView)binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
         txt3.setText("Afiliaciones");
-
 
 
         binding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
