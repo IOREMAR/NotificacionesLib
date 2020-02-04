@@ -2,7 +2,7 @@ package com.pagatodo.notifications;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
