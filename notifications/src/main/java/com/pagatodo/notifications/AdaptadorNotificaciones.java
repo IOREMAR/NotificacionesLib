@@ -97,12 +97,11 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
             public void onClick(final View view) {
                 notificacionItemListener.onNotificacionSelected(notificacion, notificacion.getId());
                 addNotificacionId(holder.binding.getRoot().getContext(), notificacion.getId());
-                notifyItemChanged(position);
+                //notifyItemChanged(position);
             }
         });
 
         holder.binding.tvListaTituloNotificacion.setText(notificacion.getTitulo());
-//        holder.binding.tvListaFechaNotificacion.setText(notiDateFormat.format(parseDate(notificacion.getFechaEnvio())));
         holder.binding.tvListaMensajeNotificacion.setText(notificacion.getMensaje());
 
         if (notificacion.isLeida()) {

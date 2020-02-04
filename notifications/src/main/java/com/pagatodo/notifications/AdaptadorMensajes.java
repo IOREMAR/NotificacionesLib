@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pagatodo.notifications.databinding.LibNotificacionItem2Binding;
 import java.text.Format;
 import java.text.ParseException;
@@ -46,6 +49,9 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
         holder.binding.tvDay.setText(obtenDia(notificacion.getFechaEnvio()));
         holder.binding.tvMthYr.setText(formatearFecha(notificacion.getFechaEnvio()));
     }
+
+
+
 
     private CharSequence formatearFecha(String campo1) {
         Format fmMonth = new SimpleDateFormat("MMM", Locale.getDefault());

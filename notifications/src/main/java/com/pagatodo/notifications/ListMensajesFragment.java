@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -45,6 +46,7 @@ public class ListMensajesFragment extends AbstractDialogFragment {
                 tpv));
         binding.recycler.setAdapter(adaptador);
     }
+
 
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();

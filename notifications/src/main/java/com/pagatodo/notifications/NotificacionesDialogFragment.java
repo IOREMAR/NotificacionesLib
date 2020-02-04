@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +27,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
     //----------UI-------------------------------------------------------
@@ -32,6 +37,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
     private NotificacionIconFragment notificacionIconFragment;
     private int numberNotification=0;
     private int numberAfiliaciones=0;
+    private ArrayList<Notificacion> listaMensajes;
     //----- Inst ----------------------------------------------------------
 
     //----- Var ----------------------------------------------------------
@@ -79,6 +85,33 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         txt3.setText("Afiliaciones");
 
 
+
+        binding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+                        break;
+                    case 1:
+                        changeStatusNotification(listaMensajes, getString(
+                                R.string.firestore_mensajes,
+                                applicationId,
+                                tpv));
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         initMessagesModules();
 
         binding.getRoot().setOnTouchListener(new View.OnTouchListener() {
@@ -97,6 +130,18 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         });
     }
 
+
+    private void changeStatusNotification(ArrayList<Notificacion> listaMensajes, String path){
+        final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
+        DocumentReference notificationReference;
+        for(Notificacion n : listaMensajes) {
+            //Obtener el documento que se va a modificar y cambiar el estatus a leido
+            if(!n.isLeida()) {
+                notificationReference = databasefb.collection(path).document(n.getId());
+                notificationReference.update("leida", true);
+            }
+        }
+    }
 
     private void loadNumbersBadge(){
         TextView txt2 = (TextView) binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_badge);
@@ -138,8 +183,26 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
             public void onEvent(final @Nullable QuerySnapshot snapshots,
                                 final @Nullable FirebaseFirestoreException firestoreException) {
                 numberAfiliaciones=0;
-                numberAfiliaciones += snapshots.getDocuments().size();
+                listaMensajes = null;
+                listaMensajes =new ArrayList<Notificacion>();
+
+                if(snapshots.getDocuments()!=null && !snapshots.getDocuments().isEmpty()){
+                    Notificacion notificacion;
+
+                    for(final DocumentSnapshot documentSnapshot : snapshots.getDocuments()){
+                        notificacion = parseNotificacion(documentSnapshot);
+                        if(!notificacion.isLeida()){
+                            numberAfiliaciones += 1;
+                        }
+                        listaMensajes.add(notificacion);
+                    }
+                }
                 loadNumbersBadge();
+            }
+            private Notificacion parseNotificacion(final DocumentSnapshot documentSnapshot){
+                final Notificacion notificacion = documentSnapshot.toObject(Notificacion.class);
+                notificacion.setId(documentSnapshot.getId());
+                return notificacion;
             }
         });
 
