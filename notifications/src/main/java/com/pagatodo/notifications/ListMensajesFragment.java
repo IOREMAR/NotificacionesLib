@@ -47,7 +47,6 @@ public class ListMensajesFragment extends AbstractDialogFragment {
         binding.recycler.setAdapter(adaptador);
     }
 
-
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
         final Query query = databasefb.collection(path);

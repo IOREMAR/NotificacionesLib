@@ -48,7 +48,6 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         binding.configMenuDetail.setVisibility(isLandScape ? View.GONE : View.VISIBLE);
     }
 
-
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +84,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         txt3.setText("Afiliaciones");
 
 
-
-        binding.tablayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        binding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
@@ -111,6 +109,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
             }
         });
+
 
         initMessagesModules();
 
