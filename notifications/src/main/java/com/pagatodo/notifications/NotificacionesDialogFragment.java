@@ -81,7 +81,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
         binding.tablayout.getTabAt(1).setCustomView(R.layout.layout_custom_tab_badge);
         TextView txt3 = (TextView)binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
-        txt3.setText("Afiliaciones");
+        txt3.setText("Enrolamiento");
 
 
         binding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
