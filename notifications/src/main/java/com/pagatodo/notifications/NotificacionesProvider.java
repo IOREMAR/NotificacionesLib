@@ -19,14 +19,14 @@ public class NotificacionesProvider {
     private static NotificacionesProvider notificacionesProvider;
 
     private Context appContext;
-    private int numeroNotificatciones;
+    private int numeroNotificaciones;
     private NotificacionCallback notificacionCallback;
     private SharedPreferences.OnSharedPreferenceChangeListener preferenceListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
             final Set<String> notificacionesLeidas = PreferenceManager.getNotificaciones(appContext);
             copyNotificaciones.removeAll(notificacionesLeidas);
-            setNumeroNotificatciones(copyNotificaciones.size());
+            setNumeroNotificaciones(copyNotificaciones.size());
         }
     };
     private TreeSet<String> copyNotificaciones = new TreeSet<>();
@@ -41,6 +41,16 @@ public class NotificacionesProvider {
                 R.string.firestore_notificacion,
                 AbstractDialogFragment.applicationId,
                 AbstractDialogFragment.tpv));
+
+        obtenerTotalNotificacionesFirestore(context.getString(
+                R.string.firestore_mensajes,
+                AbstractDialogFragment.applicationId,
+                AbstractDialogFragment.tpv));
+
+        obtenerTotalNotificacionesFirestore(context.getString(
+                R.string.firestore_mensajes,
+                AbstractDialogFragment.applicationId,
+                "all"));
 
         PreferenceManager.addNotificacionesLeidasListener(context, preferenceListener);
 
@@ -83,16 +93,16 @@ public class NotificacionesProvider {
                 copyNotificaciones = new TreeSet<>(notificationIds);
                 final Set<String> notificacionesLeidas = PreferenceManager.getNotificaciones(appContext);
                 copyNotificaciones.removeAll(notificacionesLeidas);
-                setNumeroNotificatciones(copyNotificaciones.size());
+                setNumeroNotificaciones(copyNotificaciones.size());
             }
         });
     }
 
-    public void setNumeroNotificatciones(int numeroNotificatciones) {
+    public void setNumeroNotificaciones(int numeroNotificaciones) {
         if (notificacionCallback!=null) {
-            notificacionCallback.onUpdate(numeroNotificatciones);
+            notificacionCallback.onUpdate(numeroNotificaciones);
         }
-        this.numeroNotificatciones = numeroNotificatciones;
+        this.numeroNotificaciones = numeroNotificaciones;
     }
 
     public NotificacionCallback getNotificacionCallback() {
