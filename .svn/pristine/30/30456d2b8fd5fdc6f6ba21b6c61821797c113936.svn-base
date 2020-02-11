@@ -1,0 +1,6 @@
+package com.pagatodo.notifications;
+
+import android.databinding.BindingBuildInfo;
+
+@BindingBuildInfo
+public class DataBindingInfo {}

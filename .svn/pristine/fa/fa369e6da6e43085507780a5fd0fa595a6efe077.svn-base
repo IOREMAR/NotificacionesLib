@@ -1,0 +1,192 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.pagatodo.notifications.test" >
+4
+5    <uses-sdk
+5-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:5:5-74
+6        android:minSdkVersion="21"
+6-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:5:15-41
+7        android:targetSdkVersion="28" />
+7-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:5:42-71
+8
+9    <instrumentation
+9-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:11:5-15:81
+10        android:name="android.support.test.runner.AndroidJUnitRunner"
+10-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:11:22-83
+11        android:functionalTest="false"
+11-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:14:22-52
+12        android:handleProfiling="false"
+12-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:13:22-53
+13        android:label="Tests for com.pagatodo.notifications.test"
+13-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:15:22-79
+14        android:targetPackage="com.pagatodo.notifications.test" />
+14-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:12:22-77
+15    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+16    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:13:5-79
+17-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:13:22-76
+18    <uses-permission android:name="android.permission.INTERNET" />
+18-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:14:5-67
+18-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:14:22-64
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->[com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\bef39a1cc0d6b25f80e0579e7076d11a\firebase-measurement-connector-impl-17.0.3\AndroidManifest.xml:24:5-68
+19-->[com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\bef39a1cc0d6b25f80e0579e7076d11a\firebase-measurement-connector-impl-17.0.3\AndroidManifest.xml:24:22-65
+20    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+20-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:26:5-110
+20-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:26:22-107
+21    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+21-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:26:5-82
+21-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:26:22-79
+22
+23    <application
+23-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:7:5-9:19
+24        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+24-->[com.android.support:support-compat:28.0.0] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\75de453b04d2c74e8dca0fe212a6a9e8\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+25        android:debuggable="true" >
+25-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:7:18-43
+26        <uses-library android:name="android.test.runner" />
+26-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:8:9-60
+26-->C:\ProjectsAndroid\PosMobile\branches\NotificacionesLib\notifications\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger626515698172832132.xml:8:23-57
+27
+28        <service
+28-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:17:9-21:19
+29            android:name="com.google.firebase.components.ComponentDiscoveryService"
+29-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:17:18-89
+30            android:exported="false" >
+30-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:31:13-37
+31            <meta-data
+31-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:18:13-20:85
+32                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+32-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:19:17-111
+33                android:value="com.google.firebase.components.ComponentRegistrar" />
+33-->[com.google.firebase:firebase-firestore:18.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d81ef58a5051727298d142647ecaabdc\firebase-firestore-18.0.1\AndroidManifest.xml:20:17-82
+34            <meta-data
+34-->[com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\bef39a1cc0d6b25f80e0579e7076d11a\firebase-measurement-connector-impl-17.0.3\AndroidManifest.xml:28:13-30:85
+35                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+35-->[com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\bef39a1cc0d6b25f80e0579e7076d11a\firebase-measurement-connector-impl-17.0.3\AndroidManifest.xml:29:17-139
+36                android:value="com.google.firebase.components.ComponentRegistrar" />
+36-->[com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\bef39a1cc0d6b25f80e0579e7076d11a\firebase-measurement-connector-impl-17.0.3\AndroidManifest.xml:30:17-82
+37            <meta-data
+37-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:32:13-34:85
+38                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+38-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:33:17-96
+39                android:value="com.google.firebase.components.ComponentRegistrar" />
+39-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:34:17-82
+40        </service>
+41
+42        <receiver
+42-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:29:9-33:20
+43            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+43-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:30:13-85
+44            android:enabled="true"
+44-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:31:13-35
+45            android:exported="false" >
+45-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:32:13-37
+46        </receiver>
+47        <receiver
+47-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:34:9-42:20
+48            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+48-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:35:13-100
+49            android:enabled="true"
+49-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:36:13-35
+50            android:exported="true"
+50-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:37:13-36
+51            android:permission="android.permission.INSTALL_PACKAGES" >
+51-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:38:13-69
+52            <intent-filter>
+52-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:39:13-41:29
+53                <action android:name="com.android.vending.INSTALL_REFERRER" />
+53-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:40:17-79
+53-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:40:25-76
+54            </intent-filter>
+55        </receiver>
+56
+57        <service
+57-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:44:9-47:40
+58            android:name="com.google.android.gms.measurement.AppMeasurementService"
+58-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:45:13-84
+59            android:enabled="true"
+59-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:46:13-35
+60            android:exported="false" />
+60-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:47:13-37
+61        <service
+61-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:48:9-52:72
+62            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+62-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:49:13-87
+63            android:enabled="true"
+63-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:50:13-35
+64            android:exported="false"
+64-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:51:13-37
+65            android:permission="android.permission.BIND_JOB_SERVICE" />
+65-->[com.google.firebase:firebase-analytics:16.0.5] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\3e87e9cdc50834f120bffe560ebed897\firebase-analytics-16.0.5\AndroidManifest.xml:52:13-69
+66
+67        <receiver
+67-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:37:9-44:20
+68            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+68-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:38:13-78
+69            android:exported="true"
+69-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:39:13-36
+70            android:permission="com.google.android.c2dm.permission.SEND" >
+70-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:40:13-73
+71            <intent-filter>
+71-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:41:13-43:29
+72                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+72-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:42:17-81
+72-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:42:25-78
+73            </intent-filter>
+74        </receiver>
+75        <!--
+76             FirebaseInstanceIdService performs security checks at runtime,
+77             no need for explicit permissions despite exported="true"
+78        -->
+79        <service
+79-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:50:9-56:19
+80            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+80-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:51:13-77
+81            android:exported="true" >
+81-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:52:13-36
+82            <intent-filter android:priority="-500" >
+82-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:53:13-55:29
+82-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:53:28-51
+83                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+83-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:54:17-80
+83-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\d83dd4e635419f4fc2e75bfbde70d0fc\firebase-iid-17.0.3\AndroidManifest.xml:54:25-77
+84            </intent-filter>
+85        </service>
+86
+87        <activity
+87-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\f7149279ecf4a76d9087340000dbfe80\play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+88            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+88-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\f7149279ecf4a76d9087340000dbfe80\play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+89            android:exported="false"
+89-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\f7149279ecf4a76d9087340000dbfe80\play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+90            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+90-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\f7149279ecf4a76d9087340000dbfe80\play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+91
+92        <provider
+92-->[com.google.firebase:firebase-common:16.0.4] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\23757a94143168f071b9b429469ffe17\firebase-common-16.0.4\AndroidManifest.xml:10:9-14:39
+93            android:name="com.google.firebase.provider.FirebaseInitProvider"
+93-->[com.google.firebase:firebase-common:16.0.4] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\23757a94143168f071b9b429469ffe17\firebase-common-16.0.4\AndroidManifest.xml:11:13-77
+94            android:authorities="com.pagatodo.notifications.test.firebaseinitprovider"
+94-->[com.google.firebase:firebase-common:16.0.4] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\23757a94143168f071b9b429469ffe17\firebase-common-16.0.4\AndroidManifest.xml:12:13-72
+95            android:exported="false"
+95-->[com.google.firebase:firebase-common:16.0.4] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\23757a94143168f071b9b429469ffe17\firebase-common-16.0.4\AndroidManifest.xml:13:13-37
+96            android:initOrder="100" />
+96-->[com.google.firebase:firebase-common:16.0.4] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\23757a94143168f071b9b429469ffe17\firebase-common-16.0.4\AndroidManifest.xml:14:13-36
+97
+98        <meta-data
+98-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\5985cd07642fbca9dda23562ee41e58a\play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
+99            android:name="com.google.android.gms.version"
+99-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\5985cd07642fbca9dda23562ee41e58a\play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
+100            android:value="@integer/google_play_services_version" />
+100-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\5985cd07642fbca9dda23562ee41e58a\play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
+101        <meta-data
+101-->[com.android.support:support-v4:26.1.0] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\cdcb1339adb0e9f2502db6320ad96896\support-v4-26.1.0\AndroidManifest.xml:26:9-28:38
+102            android:name="android.support.VERSION"
+102-->[com.android.support:support-v4:26.1.0] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\cdcb1339adb0e9f2502db6320ad96896\support-v4-26.1.0\AndroidManifest.xml:27:13-51
+103            android:value="26.1.0" />
+103-->[com.android.support:support-v4:26.1.0] C:\Users\fmendoza\.gradle\caches\transforms-2\files-2.1\cdcb1339adb0e9f2502db6320ad96896\support-v4-26.1.0\AndroidManifest.xml:28:13-35
+104    </application>
+105
+106</manifest>

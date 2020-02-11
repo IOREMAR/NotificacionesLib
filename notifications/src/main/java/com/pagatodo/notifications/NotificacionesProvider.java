@@ -3,6 +3,7 @@ package com.pagatodo.notifications;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -33,10 +34,13 @@ public class NotificacionesProvider {
 
     private NotificacionesProvider(Context context) {
         appContext = context;
+
         obtenerTotalNotificacionesFirestore(context.getString(
                 R.string.firestore_notificacion,
                 AbstractDialogFragment.applicationId,
                 "all"));
+
+
         obtenerTotalNotificacionesFirestore( context.getString(
                 R.string.firestore_notificacion,
                 AbstractDialogFragment.applicationId,
@@ -46,6 +50,7 @@ public class NotificacionesProvider {
                 R.string.firestore_mensajes,
                 AbstractDialogFragment.applicationId,
                 AbstractDialogFragment.tpv));
+
 
         obtenerTotalNotificacionesFirestore(context.getString(
                 R.string.firestore_mensajes,
@@ -78,22 +83,30 @@ public class NotificacionesProvider {
                     return;
                 }
 
+                int numberNotifications=0;
                 Notificacion notificacion;
                 for (final DocumentChange documentChange : snapshots.getDocumentChanges()) {
                     notificacion = parseNotificacion(documentChange);
-                    notificationIds.add(notificacion.getId());
+                    /*notificationIds.add(notificacion.getId());
                     final DocumentChange.Type type = documentChange.getType();
 
                     if (type == DocumentChange.Type.REMOVED) {
                         notificationIds.remove(notificacion.getId());
-                    }
+                    }*/
 
+                    if(!notificacion.isLeida()){
+                        numberNotifications = 1;
+                        setNumeroNotificaciones(numberNotifications);
+                    }
                 }
 
+                /*
                 copyNotificaciones = new TreeSet<>(notificationIds);
                 final Set<String> notificacionesLeidas = PreferenceManager.getNotificaciones(appContext);
                 copyNotificaciones.removeAll(notificacionesLeidas);
-                setNumeroNotificaciones(copyNotificaciones.size());
+                setNumeroNotificaciones(copyNotificaciones.size());*/
+                setNumeroNotificaciones(numberNotifications);
+                Log.i("NUMERO NOTIFICACIONES", "No.: " +numberNotifications);
             }
         });
     }

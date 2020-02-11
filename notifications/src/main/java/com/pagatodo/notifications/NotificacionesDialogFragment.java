@@ -1,7 +1,9 @@
 package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -125,9 +127,19 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
             @Override
             public void onClick(final View view) {
                 dismiss();
+                restartActivity(getActivity());
+
             }
         });
     }
+
+    private void restartActivity(Activity act){
+        Intent intent = new Intent();
+        intent.setClass(act, act.getClass());
+        act.startActivity(intent);
+        act.finish();
+    }
+
 
 
     private void changeStatusNotification(ArrayList<Notificacion> listaMensajes, String path){

@@ -1,0 +1,202 @@
+package com.pagatodo.notifications;
+
+import android.databinding.DataBinderMapper;
+import android.databinding.DataBindingComponent;
+import android.databinding.ViewDataBinding;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import android.view.View;
+import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibListaNotficacionesMiBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibNotificacionDetalleBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibNotificacionDetalleMiBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibNotificacionIconBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibNotificacionListBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentLibNotificationMiBindingImpl;
+import com.pagatodo.notifications.databinding.FragmentListMensajesBindingImpl;
+import com.pagatodo.notifications.databinding.LibNotificacionItem2BindingImpl;
+import com.pagatodo.notifications.databinding.LibNotificacionItemBindingImpl;
+import java.lang.IllegalArgumentException;
+import java.lang.Integer;
+import java.lang.Object;
+import java.lang.Override;
+import java.lang.RuntimeException;
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class DataBinderMapperImpl extends DataBinderMapper {
+  private static final int LAYOUT_FRAGMENTLIBDIALOGNOTIFICACIONES = 1;
+
+  private static final int LAYOUT_FRAGMENTLIBLISTANOTFICACIONESMI = 2;
+
+  private static final int LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLE = 3;
+
+  private static final int LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLEMI = 4;
+
+  private static final int LAYOUT_FRAGMENTLIBNOTIFICACIONICON = 5;
+
+  private static final int LAYOUT_FRAGMENTLIBNOTIFICACIONLIST = 6;
+
+  private static final int LAYOUT_FRAGMENTLIBNOTIFICATIONMI = 7;
+
+  private static final int LAYOUT_FRAGMENTLISTMENSAJES = 8;
+
+  private static final int LAYOUT_LIBNOTIFICACIONITEM = 9;
+
+  private static final int LAYOUT_LIBNOTIFICACIONITEM2 = 10;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(10);
+
+  static {
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_dialog_notificaciones, LAYOUT_FRAGMENTLIBDIALOGNOTIFICACIONES);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_lista_notficaciones_mi, LAYOUT_FRAGMENTLIBLISTANOTFICACIONESMI);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_notificacion_detalle, LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLE);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_notificacion_detalle_mi, LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLEMI);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_notificacion_icon, LAYOUT_FRAGMENTLIBNOTIFICACIONICON);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_notificacion_list, LAYOUT_FRAGMENTLIBNOTIFICACIONLIST);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_lib_notification_mi, LAYOUT_FRAGMENTLIBNOTIFICATIONMI);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.fragment_list_mensajes, LAYOUT_FRAGMENTLISTMENSAJES);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.lib_notificacion_item, LAYOUT_LIBNOTIFICACIONITEM);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.pagatodo.notifications.R.layout.lib_notificacion_item_2, LAYOUT_LIBNOTIFICACIONITEM2);
+  }
+
+  @Override
+  public ViewDataBinding getDataBinder(DataBindingComponent component, View view, int layoutId) {
+    int localizedLayoutId = INTERNAL_LAYOUT_ID_LOOKUP.get(layoutId);
+    if(localizedLayoutId > 0) {
+      final Object tag = view.getTag();
+      if(tag == null) {
+        throw new RuntimeException("view must have a tag");
+      }
+      switch(localizedLayoutId) {
+        case  LAYOUT_FRAGMENTLIBDIALOGNOTIFICACIONES: {
+          if ("layout/fragment_lib_dialog_notificaciones_0".equals(tag)) {
+            return new FragmentLibDialogNotificacionesBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_dialog_notificaciones is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBLISTANOTFICACIONESMI: {
+          if ("layout/fragment_lib_lista_notficaciones_mi_0".equals(tag)) {
+            return new FragmentLibListaNotficacionesMiBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_lista_notficaciones_mi is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLE: {
+          if ("layout/fragment_lib_notificacion_detalle_0".equals(tag)) {
+            return new FragmentLibNotificacionDetalleBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_notificacion_detalle is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBNOTIFICACIONDETALLEMI: {
+          if ("layout/fragment_lib_notificacion_detalle_mi_0".equals(tag)) {
+            return new FragmentLibNotificacionDetalleMiBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_notificacion_detalle_mi is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBNOTIFICACIONICON: {
+          if ("layout/fragment_lib_notificacion_icon_0".equals(tag)) {
+            return new FragmentLibNotificacionIconBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_notificacion_icon is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBNOTIFICACIONLIST: {
+          if ("layout/fragment_lib_notificacion_list_0".equals(tag)) {
+            return new FragmentLibNotificacionListBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_notificacion_list is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLIBNOTIFICATIONMI: {
+          if ("layout/fragment_lib_notification_mi_0".equals(tag)) {
+            return new FragmentLibNotificationMiBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_lib_notification_mi is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTLISTMENSAJES: {
+          if ("layout/fragment_list_mensajes_0".equals(tag)) {
+            return new FragmentListMensajesBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_list_mensajes is invalid. Received: " + tag);
+        }
+        case  LAYOUT_LIBNOTIFICACIONITEM: {
+          if ("layout/lib_notificacion_item_0".equals(tag)) {
+            return new LibNotificacionItemBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for lib_notificacion_item is invalid. Received: " + tag);
+        }
+        case  LAYOUT_LIBNOTIFICACIONITEM2: {
+          if ("layout/lib_notificacion_item_2_0".equals(tag)) {
+            return new LibNotificacionItem2BindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for lib_notificacion_item_2 is invalid. Received: " + tag);
+        }
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public ViewDataBinding getDataBinder(DataBindingComponent component, View[] views, int layoutId) {
+    if(views == null || views.length == 0) {
+      return null;
+    }
+    int localizedLayoutId = INTERNAL_LAYOUT_ID_LOOKUP.get(layoutId);
+    if(localizedLayoutId > 0) {
+      final Object tag = views[0].getTag();
+      if(tag == null) {
+        throw new RuntimeException("view must have a tag");
+      }
+      switch(localizedLayoutId) {
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public int getLayoutId(String tag) {
+    if (tag == null) {
+      return 0;
+    }
+    Integer tmpVal = InnerLayoutIdLookup.sKeys.get(tag);
+    return tmpVal == null ? 0 : tmpVal;
+  }
+
+  @Override
+  public String convertBrIdToString(int localId) {
+    String tmpVal = InnerBrLookup.sKeys.get(localId);
+    return tmpVal;
+  }
+
+  @Override
+  public List<DataBinderMapper> collectDependencies() {
+    ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(1);
+    result.add(new com.android.databinding.library.baseAdapters.DataBinderMapperImpl());
+    return result;
+  }
+
+  private static class InnerBrLookup {
+    static final SparseArray<String> sKeys = new SparseArray<String>(2);
+
+    static {
+      sKeys.put(0, "_all");
+    }
+  }
+
+  private static class InnerLayoutIdLookup {
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(10);
+
+    static {
+      sKeys.put("layout/fragment_lib_dialog_notificaciones_0", com.pagatodo.notifications.R.layout.fragment_lib_dialog_notificaciones);
+      sKeys.put("layout/fragment_lib_lista_notficaciones_mi_0", com.pagatodo.notifications.R.layout.fragment_lib_lista_notficaciones_mi);
+      sKeys.put("layout/fragment_lib_notificacion_detalle_0", com.pagatodo.notifications.R.layout.fragment_lib_notificacion_detalle);
+      sKeys.put("layout/fragment_lib_notificacion_detalle_mi_0", com.pagatodo.notifications.R.layout.fragment_lib_notificacion_detalle_mi);
+      sKeys.put("layout/fragment_lib_notificacion_icon_0", com.pagatodo.notifications.R.layout.fragment_lib_notificacion_icon);
+      sKeys.put("layout/fragment_lib_notificacion_list_0", com.pagatodo.notifications.R.layout.fragment_lib_notificacion_list);
+      sKeys.put("layout/fragment_lib_notification_mi_0", com.pagatodo.notifications.R.layout.fragment_lib_notification_mi);
+      sKeys.put("layout/fragment_list_mensajes_0", com.pagatodo.notifications.R.layout.fragment_list_mensajes);
+      sKeys.put("layout/lib_notificacion_item_0", com.pagatodo.notifications.R.layout.lib_notificacion_item);
+      sKeys.put("layout/lib_notificacion_item_2_0", com.pagatodo.notifications.R.layout.lib_notificacion_item_2);
+    }
+  }
+}
