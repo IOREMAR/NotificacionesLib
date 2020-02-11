@@ -127,19 +127,10 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
             @Override
             public void onClick(final View view) {
                 dismiss();
-                restartActivity(getActivity());
 
             }
         });
     }
-
-    private void restartActivity(Activity act){
-        Intent intent = new Intent();
-        intent.setClass(act, act.getClass());
-        act.startActivity(intent);
-        act.finish();
-    }
-
 
 
     private void changeStatusNotification(ArrayList<Notificacion> listaMensajes, String path){
