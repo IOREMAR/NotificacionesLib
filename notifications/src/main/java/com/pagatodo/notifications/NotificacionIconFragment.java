@@ -46,7 +46,6 @@ public class NotificacionIconFragment extends AbstractDialogFragment {
         });
 
         final NotificacionesProvider.NotificacionCallback listener = new NotificacionesProvider.NotificacionCallback(){
-
             @Override
             public void onUpdate(Integer notificacionesCount) {
                 actualizarNotificaciones(notificacionesCount);

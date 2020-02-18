@@ -21,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         String notificacionApplicationId = "com.pagatodo.yawallet/CO";
-//        String tpvcod = ApiInstance.getInstance().getDatosSesion().getDatosTPV().getTpvcod();
-        String tpvcod = "00002656";
+        String tpvcod = "00002568";//Tpv Sin Mensajes
+        //String tpvcod = "00002561";//Tpv Con Mensajes
+
         com.pagatodo.notifications.AbstractDialogFragment.initIdentity(
                 notificacionApplicationId,
                 tpvcod
@@ -35,11 +36,5 @@ public class MainActivity extends AppCompatActivity {
         NotificacionesDialogFragment notificacionesDialogFragment = new NotificacionesDialogFragment();
         notificacionesDialogFragment.setNotificacionIconFragment(new NotificacionIconFragment());
         notificacionesDialogFragment.show(getSupportFragmentManager(), "");
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }

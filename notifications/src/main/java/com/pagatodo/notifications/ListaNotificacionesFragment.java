@@ -85,14 +85,13 @@ public class ListaNotificacionesFragment extends AbstractDialogFragment {
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
         final Query query = databasefb.collection(path);
-        //final Query query = databasefb.collection("/notification/com.pagatodo.yawallet/CO/00002568/Mensajes/");
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(final @Nullable QuerySnapshot snapshots,
                                 final @Nullable FirebaseFirestoreException firestoreException) {
                 binding.pbNotificaciones.setVisibility(View.GONE);
-                if (firestoreException != null) {
+                if (firestoreException != null || snapshots==null) {
                     return;
                 }
                 numNotificacionesFirestore += snapshots.getDocuments().size();

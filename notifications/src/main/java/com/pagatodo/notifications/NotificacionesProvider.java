@@ -40,7 +40,6 @@ public class NotificacionesProvider {
                 AbstractDialogFragment.applicationId,
                 "all"));
 
-
         obtenerTotalNotificacionesFirestore( context.getString(
                 R.string.firestore_notificacion,
                 AbstractDialogFragment.applicationId,
@@ -51,7 +50,6 @@ public class NotificacionesProvider {
                 AbstractDialogFragment.applicationId,
                 AbstractDialogFragment.tpv));
 
-
         obtenerTotalNotificacionesFirestore(context.getString(
                 R.string.firestore_mensajes,
                 AbstractDialogFragment.applicationId,
@@ -61,8 +59,6 @@ public class NotificacionesProvider {
 
     }
 
-
-
     public static NotificacionesProvider getInstance(Context context){
         if (notificacionesProvider==null) {
             notificacionesProvider = new NotificacionesProvider(context);
@@ -71,6 +67,7 @@ public class NotificacionesProvider {
     }
 
     private Set<String> notificationIds = new TreeSet<>();
+
     public void obtenerTotalNotificacionesFirestore(final String path){
         final FirebaseFirestore database = FirebaseFirestore.getInstance();
         final Query query = database.collection(path);
@@ -79,32 +76,19 @@ public class NotificacionesProvider {
             public void onEvent(final @Nullable QuerySnapshot snapshots,
                                 final @Nullable FirebaseFirestoreException exc) {
 
-                if (exc != null) {
+                if (exc != null || snapshots==null) {
                     return;
                 }
-
                 int numberNotifications=0;
                 Notificacion notificacion;
                 for (final DocumentChange documentChange : snapshots.getDocumentChanges()) {
                     notificacion = parseNotificacion(documentChange);
-                    /*notificationIds.add(notificacion.getId());
-                    final DocumentChange.Type type = documentChange.getType();
-
-                    if (type == DocumentChange.Type.REMOVED) {
-                        notificationIds.remove(notificacion.getId());
-                    }*/
-
                     if(!notificacion.isLeida()){
                         numberNotifications = 1;
                         setNumeroNotificaciones(numberNotifications);
                     }
                 }
 
-                /*
-                copyNotificaciones = new TreeSet<>(notificationIds);
-                final Set<String> notificacionesLeidas = PreferenceManager.getNotificaciones(appContext);
-                copyNotificaciones.removeAll(notificacionesLeidas);
-                setNumeroNotificaciones(copyNotificaciones.size());*/
                 setNumeroNotificaciones(numberNotifications);
                 Log.i("NUMERO NOTIFICACIONES", "No.: " +numberNotifications);
             }
@@ -123,7 +107,6 @@ public class NotificacionesProvider {
     }
 
     public void setNotificacionCallback(NotificacionCallback notificacionCallback) {
-        int hash = notificacionCallback.hashCode();
         this.notificacionCallback = notificacionCallback;
     }
 

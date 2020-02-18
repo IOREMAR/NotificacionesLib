@@ -28,7 +28,6 @@ public class PreferenceManager {
         final Set<String> inNotification = new HashSet<>(notificacionIdSet);
         inNotification.add(notificacionId);
         getPreference(context).edit().putStringSet(NOTIFICACIONES_ARRAY, inNotification).apply();
-//        getPreference(context).edit().putInt(NOTIFICACIONES_COUNT, 123).commit();
     }
 
     public static void deleteidNotificacion(final String notificacionId, Context context) {

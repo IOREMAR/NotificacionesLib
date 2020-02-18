@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -50,15 +49,13 @@ public class ListMensajesFragment extends AbstractDialogFragment {
     private void initNotificacionListener(final String path) {//NOSONAR complejo
         final FirebaseFirestore databasefb = FirebaseFirestore.getInstance();
         final Query query = databasefb.collection(path);
-        //final Query query = databasefb.collection("/notification/com.pagatodo.yawallet/CO/00002568/Inbox/");
-
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(final @Nullable QuerySnapshot snapshots,
                                 final @Nullable FirebaseFirestoreException firestoreException) {
                 binding.loadingBar.setVisibility(View.GONE);
-                if (firestoreException != null) {
+                if (firestoreException != null ||snapshots==null) {
                     return;
                 }
                 numNotificacionesFirestore += snapshots.getDocuments().size();
