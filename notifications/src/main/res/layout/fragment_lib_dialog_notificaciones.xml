@@ -36,7 +36,7 @@
                     android:text="@string/titulo_mensajes_mi"
                     android:textAlignment="center"
                     android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

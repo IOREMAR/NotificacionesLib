@@ -7,5 +7,5 @@
     <string name="Cuerpo_notificacion_aviso">"Estimado Usuario, Usted Tiene Notificaciones Sin Leer"</string>
 
     <string name="button_regresar">Regresar</string>
-    <string name="titulo_mensajes_mi">Centro de Mensajes</string>
+    <string name="titulo_mensajes_mi">Mensajes</string>
 </resources>
