@@ -4,12 +4,11 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.pagatodo.notifications.databinding.LibNotificacionItem2Binding;
+
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,12 +24,23 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
 
     private final List<Notificacion> notificaciones = new ArrayList<>();
     private Context context;
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private static final Comparator DATE_COMPARATOR = new Comparator<Notificacion>() {
         @Override
         public int compare(final Notificacion notificacion, final Notificacion noti) {
-            return noti.getFechaEnvio().compareTo(notificacion.getFechaEnvio());
+
+            Calendar calNoti = Calendar.getInstance();
+            Calendar calNotificacion = Calendar.getInstance();
+
+            try {
+                calNoti.setTime(dateFormat.parse(noti.getFechaEnvio()));
+                calNotificacion.setTime(dateFormat.parse(notificacion.getFechaEnvio()));
+
+                return calNoti.compareTo(calNotificacion);
+            } catch (ParseException e) {
+                Log.e("EXCEPTION",e.getMessage());
+                return -1;
+            }
         }
     };
 
@@ -45,13 +55,11 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
     @Override
     public void onBindViewHolder(@NonNull MensajesVieHolder holder, int position) {
         final Notificacion notificacion = notificaciones.get(position);
+        holder.binding.tvTitlePromocion.setText(notificacion.getTitulo());
         holder.binding.tvMensaje.setText(notificacion.getMensaje());
         holder.binding.tvDay.setText(obtenDia(notificacion.getFechaEnvio()));
         holder.binding.tvMthYr.setText(formatearFecha(notificacion.getFechaEnvio()));
     }
-
-
-
 
     private CharSequence formatearFecha(String campo1) {
         Format fmMonth = new SimpleDateFormat("MMM", Locale.getDefault());
@@ -86,7 +94,9 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
 
     public void add(final Notificacion notificacion) {
         if (!notificaciones.contains(notificacion)) {
+            if(notificaciones.size()<10){
             notificaciones.add(notificacion);
+            }
             sortNotificaciones();
             notifyItemChanged(notificaciones.indexOf(notificacion));
             notifyDataSetChanged();
@@ -97,7 +107,10 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Me
         if (notificaciones.contains(notificacion)) {
             final int itemIndex = notificaciones.indexOf(notificacion);
             notificaciones.set(itemIndex, notificacion);
-            notifyItemChanged(itemIndex);
+            sortNotificaciones();
+            notifyItemChanged(notificaciones.indexOf(notificacion));
+            notifyDataSetChanged();
+            //notifyItemChanged(itemIndex);
         }
     }
 

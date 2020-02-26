@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         String notificacionApplicationId = "com.pagatodo.yawallet/CO";
-        String tpvcod = "00002568";//Tpv Sin Mensajes
-        //String tpvcod = "00002561";//Tpv Con Mensajes
+        //String tpvcod = "00002568";//Tpv Sin Mensajes
+        String tpvcod = "00002561";//Tpv Con Mensajes
 
         com.pagatodo.notifications.AbstractDialogFragment.initIdentity(
                 notificacionApplicationId,

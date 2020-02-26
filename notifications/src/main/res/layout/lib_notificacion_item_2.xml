@@ -59,16 +59,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+                <TextView
+                    android:id="@+id/tvTitlePromocion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Title Promocion" />
+
+
                 <TextView
                     android:id="@+id/tvMensaje"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/tvTitlePromocion"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="15dp"
-                    android:maxLines="3"
+                    android:maxLines="2"
                     android:ellipsize="end"
                     tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel risus pellentesque, vehicula magna at, pretium" />
-
+                </RelativeLayout>
             </RelativeLayout>
 
         </LinearLayout>
