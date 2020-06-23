@@ -77,7 +77,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
         binding.viewPager.setAdapter(pagerAdapter);
         binding.tablayout.setupWithViewPager(binding.viewPager);
 
-        initMessagesModules();
+//        initMessagesModules();
         initInboxModules();
 
         binding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

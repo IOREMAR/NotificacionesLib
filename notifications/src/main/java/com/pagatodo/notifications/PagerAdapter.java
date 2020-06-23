@@ -10,8 +10,10 @@ import java.util.List;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    private List<AbstractDialogFragment> fragmentList = Arrays.asList(new ListaNotificacionesFragment(), new ListMensajesFragment());
-    private List<String> stringList = Arrays.asList("Notificaciones", "Enrolamiento");
+    //    private List<AbstractDialogFragment> fragmentList = Arrays.asList(new ListaNotificacionesFragment(), new ListMensajesFragment());
+//    private List<String> stringList = Arrays.asList("Notificaciones", "Enrolamiento");
+    private List<ListaNotificacionesFragment> fragmentList = Arrays.asList(new ListaNotificacionesFragment());
+    private List<String> stringList = Arrays.asList("Notificaciones");
 
     public PagerAdapter(FragmentManager fm) {
         super(fm);
