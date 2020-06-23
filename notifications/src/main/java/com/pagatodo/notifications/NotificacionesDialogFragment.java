@@ -2,13 +2,9 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +14,11 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentLibDialogNotificacionesBinding;
+
 import java.util.ArrayList;
 
 public class NotificacionesDialogFragment extends AbstractDialogFragment {
@@ -135,7 +137,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
 	private void loadNumberBadgeInbox(){
 		if(binding.tablayout.getTabAt(0)!=null) {
-			TextView txt2 = (TextView) binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_badge);
+			TextView txt2 = binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_badge);
 
 			if (numberNotification > 0) {
 				txt2.setVisibility(View.VISIBLE);
@@ -149,7 +151,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
 	private void loadNumberBadgeMessage(){
 		if(binding.tablayout.getTabAt(1)!=null) {
-			TextView txt4 = (TextView) binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_badge);
+			TextView txt4 = binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_badge);
 
 			if (numberAfiliaciones > 0) {
 				txt4.setVisibility(View.VISIBLE);
@@ -162,14 +164,14 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 		}
 	}
 
-	private void initInboxModules(){
+	private void initInboxModules() {
 		final Query queryInbox = databasefb.collection(getString(
 				R.string.firestore_notificacion,
 				applicationId,
 				tpv));
 
 		binding.tablayout.getTabAt(0).setCustomView(R.layout.layout_custom_tab_badge);
-		TextView txt1 = (TextView) binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_text);
+		TextView txt1 = binding.tablayout.getTabAt(0).getCustomView().findViewById(R.id.tab_text);
 		txt1.setText("Notificaciones");
 
 		queryInbox.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -196,7 +198,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 
 	}
 
-	private void initMessagesModules(){
+	private void initMessagesModules() {
 
 		final Query queryMensajes = databasefb.collection(getString(
 				R.string.firestore_mensajes,
@@ -204,7 +206,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 				tpv));
 
 		binding.tablayout.getTabAt(1).setCustomView(R.layout.layout_custom_tab_badge);
-		TextView txt3 = (TextView)binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
+		TextView txt3 = binding.tablayout.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
 		txt3.setText("Comunidad");
 
 		queryMensajes.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -212,9 +214,9 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 			public void onEvent(final @Nullable QuerySnapshot snapshots,
 								final @Nullable FirebaseFirestoreException firestoreException) {
 
-					numberAfiliaciones = 0;
-					listaMensajes = null;
-					listaMensajes = new ArrayList<>();
+				numberAfiliaciones = 0;
+				listaMensajes = null;
+				listaMensajes = new ArrayList<>();
 
 					if (snapshots != null && !snapshots.getDocuments().isEmpty()) {
 						Notificacion notificacion;
