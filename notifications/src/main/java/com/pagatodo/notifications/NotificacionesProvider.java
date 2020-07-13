@@ -45,6 +45,7 @@ public class NotificacionesProvider {
                 AbstractDialogFragment.applicationId,
                 AbstractDialogFragment.tpv));
 
+        /*
         obtenerTotalNotificacionesFirestore(context.getString(
                 R.string.firestore_mensajes,
                 AbstractDialogFragment.applicationId,
@@ -54,7 +55,7 @@ public class NotificacionesProvider {
                 R.string.firestore_mensajes,
                 AbstractDialogFragment.applicationId,
                 "all"));
-
+        */
         PreferenceManager.addNotificacionesLeidasListener(context, preferenceListener);
 
     }
