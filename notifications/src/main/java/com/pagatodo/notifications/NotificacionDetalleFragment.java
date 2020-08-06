@@ -1,17 +1,19 @@
 package com.pagatodo.notifications;
 
 import android.content.res.Configuration;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -109,7 +111,7 @@ public class NotificacionDetalleFragment extends Fragment {//GOD CLASS
             binding.pvPlayer.setVisibility(View.GONE);
             clearPlayer();
             ocultarNotificacionDetalle();
-            ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
+           // ((NotificacionesDialogFragment) getParentFragment()).loadFragmentLista();
         }
     }
 

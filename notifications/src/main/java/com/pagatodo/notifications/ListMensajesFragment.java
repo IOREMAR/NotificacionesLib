@@ -1,14 +1,16 @@
 package com.pagatodo.notifications;
 
-import android.databinding.DataBindingUtil;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,9 +19,6 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pagatodo.notifications.databinding.FragmentListMensajesBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ListMensajesFragment extends AbstractDialogFragment {
 
     private FragmentListMensajesBinding binding;
@@ -33,6 +32,7 @@ public class ListMensajesFragment extends AbstractDialogFragment {
         return binding.getRoot();
     }
 
+    @SuppressLint("WrongConstant")
     private void initUI(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_mensajes, container, false);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false));

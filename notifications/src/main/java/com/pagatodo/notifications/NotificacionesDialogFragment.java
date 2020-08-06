@@ -2,13 +2,9 @@ package com.pagatodo.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +14,10 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -43,6 +43,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 	int detailId;
 	private boolean isLandScape;
 
+
 	public void loadFragmentLista() {
 		binding.configMenuDetail.setVisibility(isLandScape ? View.GONE : View.VISIBLE);
 	}
@@ -67,12 +68,15 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 	@SuppressLint("ClickableViewAccessibility")
 	private void initUI(final LayoutInflater inflater, final ViewGroup container) {
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lib_dialog_notificaciones, container, false);
+
 		detailId = isLandScape ? R.id.config_menu_detail : R.id.config_menu_items;
 		binding.configMenuDetail.setVisibility(isLandScape ? View.VISIBLE : View.GONE);
 
-		PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager());
+
+		PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),0);
 		binding.viewPager.setAdapter(pagerAdapter);
 		binding.tablayout.setupWithViewPager(binding.viewPager);
+
 
 		initMessagesModules();
 		initInboxModules();
@@ -89,8 +93,8 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 								applicationId,
 								tpv));
 						break;
-						default:
-							break;
+					default:
+						break;
 				}
 			}
 
@@ -255,7 +259,7 @@ public class NotificacionesDialogFragment extends AbstractDialogFragment {
 		}
 	}
 
-	public void setNotificacionIconFragment(final NotificacionIconFragment notificacionIconFragment) {
+	public void setNotificacionIconFragment(NotificacionIconFragment notificacionIconFragment) {
 		this.notificacionIconFragment = notificacionIconFragment;
 	}
 
